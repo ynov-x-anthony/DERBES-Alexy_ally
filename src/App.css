@@ -1,23 +1,190 @@
-.page { background: #ffffff; }
-h1 { color: #2a2a2a; }
-.subtitle { color: #aaaaaa; } /* trop clair : ~2.3:1 */
 
-.card {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 1.2rem;
-  margin-bottom: 1rem;
+/* =========================================
+   QUÊTE 5 — CONTRASTES ET ACCESSIBILITÉ
+   ========================================= */
+
+/* Palette accessible */
+:root {
+  --color-text: #252525;
+  --color-text-secondary: #595959;
+  --color-background: #ffffff;
+  --color-primary: #005fcc;
+  --color-primary-hover: #004a9f;
+  --color-border: #767676;
+  --color-focus: #005fcc;
 }
-.label { color: #999999; font-size: .85rem; } /* ~2.8:1 */
-.value { color: #1a1a1a; font-weight: 600; }
-.hint { color: #bbbbbb; font-size: .9rem; } /* ~1.8:1 */
+
+/* Base générale */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+/* Titres */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text);
+}
+
+/* =========================================
+   LES 3 TEXTES À CORRIGER
+   ========================================= */
+
+/* Sous-titre */
+.subtitle {
+  color: var(--color-text-secondary);
+}
+
+/* Libellés */
+.label {
+  color: var(--color-text-secondary);
+}
+
+/* Texte d'aide */
+.hint {
+  color: var(--color-text-secondary);
+}
+
+/* =========================================
+   BOUTON PRINCIPAL
+   ========================================= */
 
 .btn-primary {
-  background: #6fa8dc; /* bleu clair */
-  color: #ffffff;      /* texte blanc sur bleu clair : ~2.1:1 */
-  border: none;
-  padding: .6rem 1.1rem;
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
   border-radius: 6px;
-  margin-top: .6rem;
+  padding: 10px 18px;
+  font: inherit;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  color: #ffffff;
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* =========================================
+   LIENS
+   ========================================= */
+
+a {
+  color: #005fcc;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: #004a9f;
+}
+
+/* =========================================
+   CHAMPS DE FORMULAIRE
+   ========================================= */
+
+input,
+textarea,
+select {
+  color: var(--color-text);
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 1;
+}
+
+label {
+  color: var(--color-text);
+}
+
+/* =========================================
+   FOCUS VISIBLE AU CLAVIER
+   Ne pas supprimer outline sans remplacement
+   ========================================= */
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* =========================================
+   TABLEAUX
+   ========================================= */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid var(--color-border);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  color: var(--color-text);
+  background-color: #f2f2f2;
+}
+
+/* =========================================
+   SKIP LINK
+   ========================================= */
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 16px;
+  color: #005fcc;
+  background-color: #ffffff;
+  border: 2px solid #005fcc;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* =========================================
+   PRÉFÉRENCE DE MOUVEMENT RÉDUIT
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
