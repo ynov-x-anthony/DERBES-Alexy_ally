@@ -1,38 +1,84 @@
+
 import { useState } from 'react'
-import Modal from './Modal'
-import './App.css'
+import Modal from './components/Modal'
+import Accordion from './components/Accordion'
 
-// Mission : débranche ta souris. Tab/Shift+Tab/Entrée/Échap doivent suffire
-// à tout utiliser. Il y a 4 problèmes volontaires dans ce starter.
-
-function App() {
-  const [open, setOpen] = useState(false)
+export default function App() {
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
-    <div className="page">
-      <h1>Paramètres du compte</h1>
+    <>
+      {/* Lien accessible dès la première pression sur Tab */}
+      <a className="skip-link" href="#contact-form">
+        Aller directement au formulaire
+      </a>
 
-      {/* Problème 1 : un faux lien invisible, placé avant le vrai contenu,
-          capture le focus en premier à cause de son tabIndex positif. */}
-      <span tabIndex={1} className="decoy">·</span>
+      <header>
+        <h1>Quête 4 : Navigation clavier</h1>
 
-      <a href="#form">Aller au formulaire</a>
+        <nav aria-label="Navigation principale">
+          <a href="#accueil">Accueil</a>
+          {' | '}
+          <a href="#contact-form">Formulaire</a>
+        </nav>
+      </header>
 
-      <form id="form" className="form">
-        <label htmlFor="name">Nom</label>
-        <input id="name" type="text" />
+      <main id="accueil">
+        <section>
+          <h2>Accordéon accessible</h2>
 
-        <label htmlFor="email">Email</label>
-        <input id="email" type="email" />
+          <Accordion title="Afficher les informations">
+            <p>
+              Ce panneau peut être ouvert et fermé au clavier
+              ou à la souris.
+            </p>
+          </Accordion>
+        </section>
 
-        <button type="button" onClick={() => setOpen(true)}>
-          Ouvrir les préférences avancées
-        </button>
-      </form>
+        <section>
+          <h2>Fenêtre modale</h2>
 
-      {open && <Modal onClose={() => setOpen(false)} />}
-    </div>
+          <button
+            type="button"
+            onClick={() => setModalOpen(true)}
+          >
+            Ouvrir la modale
+          </button>
+
+          {modalOpen && (
+            <Modal onClose={() => setModalOpen(false)}>
+              <p>
+                Utilise Tab et Maj + Tab pour parcourir les
+                éléments de cette fenêtre.
+              </p>
+              <p>
+                Appuie sur Échap pour la fermer.
+              </p>
+            </Modal>
+          )}
+        </section>
+
+        <section>
+          <h2>Formulaire de contact</h2>
+
+          <form
+            id="contact-form"
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <div>
+              <label htmlFor="name">Nom</label>
+              <input id="name" name="name" type="text" />
+            </div>
+
+            <div>
+              <label htmlFor="email">Adresse e-mail</label>
+              <input id="email" name="email" type="email" />
+            </div>
+
+            <button type="submit">Envoyer</button>
+          </form>
+        </section>
+      </main>
+    </>
   )
 }
-
-export default App
