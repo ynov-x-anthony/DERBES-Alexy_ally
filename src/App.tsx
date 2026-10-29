@@ -63,7 +63,8 @@ export default function App() {
 
           <form
             id="contact-form"
-            onSubmit={(event) => event.preventDefault()}
+                tabIndex={-1}
+                  onSubmit={(event) => event.preventDefault()}
           >
             <div>
               <label htmlFor="name">Nom</label>
