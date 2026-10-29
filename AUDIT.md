@@ -13,10 +13,10 @@ colle ici un résumé de ce que chacun remonte :
 
 | Élément | Couleur texte | Couleur fond | Ratio mesuré | Ratio AA requis | Conforme ? |
 |---------|---------------|--------------|--------------|------------------|------------|
-| `.subtitle` | | | | 4.5:1 | |
-| `.label` | | | | 4.5:1 | |
-| `.hint` | | | | 4.5:1 | |
-| `.btn-primary` | | | | 4.5:1 (texte) | |
+| `.subtitle` | `#595959` | `#FFFFFF` | 7,00:1 | 4.5:1 | Oui |
+| `.label` | `#595959` | `#FFFFFF` | 7,00:1 | 4.5:1 | Oui |
+| `.hint` | `#595959` | `#FFFFFF` | 7,00:1 | 4.5:1 | Oui |
+| `.btn-primary` | `#FFFFFF` | `#005FCC` | 6,00:1 | 4.5:1 (texte) | Oui |
 
 > Utilise un vérificateur de contraste (ex. le picker de couleur de Chrome
 > DevTools affiche déjà le ratio AA/AAA quand tu modifies une couleur).
